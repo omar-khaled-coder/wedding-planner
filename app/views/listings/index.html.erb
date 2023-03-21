@@ -1,14 +1,44 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Listings</h1>
+<div class="container-fluid px-10">
 
-<div id="listings">
-  <% @listings.each do |listing| %>
-    <%= render listing %>
-    <p>
-      <%= link_to "Show this listing", listing %>
-    </p>
-  <% end %>
+    <h1 class="title px-4">Wedding Halls</h1>
+
+  <div class="row gx-5 gy-5 d-flex px-4">
+
+          <% @listings.each do |listing| %>
+
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 card-listing">
+              <%# <%= render listing %>
+              <%= link_to listing_path(listing), class:"text-decoration-none" do %>
+                <div class="cards-container">
+
+                  <div class="hover-card">
+                    <% if listing.photo.attached? %>
+                    <%= cl_image_tag listing.photo.key ,class: "image" %>
+                    <% else %>
+                    <%= image_tag "wedding-ceremony-reception-celebration-romantic.jpg", class: "image" %>
+                    <% end  %>
+                    <p class="hidden-text"><%= listing.short_description %></p>
+                  </div>
+
+                  <div class="card-description">
+                    <h3 class="card-title space pt-2"><%=listing.name %></h3>
+                  </div>
+
+                  <p>
+                    <%= link_to "Show this listing", listing %>
+                  </p>
+
+                </div>
+
+
+
+              <% end %>
+            </div>
+          <% end %>
+
+
+        <%= link_to "New listing", new_listing_path %>
+  </div>
 </div>
-
-<%= link_to "New listing", new_listing_path %>
