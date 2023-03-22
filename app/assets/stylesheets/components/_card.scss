@@ -17,26 +17,27 @@
 }
 
 .cards-container {
-  background-color: #272727;
-  box-shadow: 0 0 4px $green;
+  background-color: #f8f8f8;
+  box-shadow: 0 0 1px;
   border-radius: 5px;
-  border:  solid $green 1px;
+  border: solid black 0px;
   animation: ease-out;
   transition: 0.7s;
 
   &:hover {
-    box-shadow: 0 0 10px $green;
+    box-shadow: 0 0 10px;
     scale: 1.05;
     animation: ease;
     transition: 0.7s;
   }
 
   h3 {
-    color: $green;
+    color: black;
+    font-size: 18px;
   }
 
   p, a, i {
-    color: white;
+    color: rgba(0, 0, 0, 0.56);
 
   }
 }
@@ -45,16 +46,19 @@
   object-fit: cover;
   aspect-ratio: 1/1;
   width: 100%;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .card-title {
   color: black;
+
 }
 
 .card-info {
-  color: gray;
+  color: black;
   margin-bottom: 0px;
 }
 
@@ -109,9 +113,9 @@
 
 .cards-container-review {
   background-color: #272727;
-  box-shadow: 0 0 4px $green;
+  box-shadow: 0 0 4px;
   border-radius: 5px;
-  border:  solid $green 1px;
+  border:  solid 1px;
   animation: ease-out;
   transition: 0.7s;
 }
