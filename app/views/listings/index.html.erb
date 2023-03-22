@@ -14,11 +14,14 @@
                 <div class="cards-container">
 
                   <div class="hover-card">
-                    <% if listing.photo.attached? %>
-                    <%= cl_image_tag listing.photo.key ,class: "image" %>
+                    <% if listing.photos.attached? %>
+                      <% listing.photos.each do |photo| %>
+                        <%= cl_image_tag photo.key, class: "image" %>
+                      <% end %>
                     <% else %>
-                    <%= image_tag "wedding-ceremony-reception-celebration-romantic.jpg", class: "image" %>
-                    <% end  %>
+                      <%= image_tag "wedding-ceremony-reception-celebration-romantic.jpg", class: "image" %>
+                    <% end %>
+
                     <p class="hidden-text" style="color:white;"><%= listing.short_description %></p>
                   </div>
 
