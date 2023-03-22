@@ -26,9 +26,18 @@
                     <h3 class="card-title space pt-2"><%=listing.name %></h3>
                   </div>
 
-                  <p>
+                  <div class="card-details justifiy-content-start">
+                    <p class="card-info space"><%=listing.duration%></p>
+                    <p class="card-info space"><%=listing.capacity%> people</p>
+                  </div>
+
+                  <div class="card-details justifiy-content-end">
+                    <p class="card-price space" style="color: black;">£ <%=listing.price %></p>
+                    <p class="card-title space" style="color: black;"><%=listing.rating%> <i class="fas fa-star" style="color: black;"></i></p>
+                  </div>
+                  <%# <p>
                     <%= link_to "Show this listing", listing %>
-                  </p>
+                  <%# </p> %>
 
                 </div>
 
