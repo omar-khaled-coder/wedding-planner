@@ -19,6 +19,7 @@ class ListingsController < ApplicationController
   def edit
   end
 
+
   # POST /listings or /listings.json
   def create
     @listing = Listing.new(listing_params)
@@ -33,6 +34,7 @@ class ListingsController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /listings/1 or /listings/1.json
   def update
@@ -58,13 +60,17 @@ class ListingsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
-    def set_listing
-      @listing = Listing.find(params[:id])
-    end
+
+  def set_listing
+
+    @listing = Listing.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def listing_params
-      params.require(:listing).permit(:name, :rating, :description, :short_description, :location, :price, :duration, :capacity, :user_id, photos: [])
-    end
+
+  def listing_params
+    params.require(:listing).permit(:name, :rating, :description, :short_description, :location, :price, :duration, :capacity, :user_id, photos: [])
+  end
 end

@@ -2,3 +2,12 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
+// = require slick
+//= require jquery3
+//= require popper
+//= require bootstrap
+//= require_tree .
+
+import "jquery"
+import "popper.js"
+import "./application"
