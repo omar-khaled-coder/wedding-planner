@@ -28,7 +28,7 @@
                   </div>
 
                   <div class="card-details justifiy-content-start">
-                    <p class="card-info space"><%=listing.duration%></p>
+                    <p class="card-info space"><%=listing.duration%> hour</p>
                     <p class="card-info space"><%=listing.capacity%> people</p>
                   </div>
 
@@ -52,3 +52,12 @@
         <%= link_to "New listing", new_listing_path %>
   </div>
 </div>
+
+
+<%# <% if listing.photos.attached? %>
+                      <%# <% listing.photos.each do |photo| %>
+                        <%# <%= cl_image_tag photo.key, class: "image" %>
+                      <%# <% end %>
+                    <%# <% else %>
+                      <%# <%= image_tag "wedding-ceremony-reception-celebration-romantic.jpg", class: "image" %>
+                    <%# <% end %>
