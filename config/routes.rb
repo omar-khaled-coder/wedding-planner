@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   resources :listings, only: [:create, :show, :update]
   resources :bookings, only: [:create, :show, :update]
 
-
+  get "/dashboard", to: "pages#dashboard"
 end
