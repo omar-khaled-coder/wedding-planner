@@ -1,13 +1,39 @@
 <div class="container px-0" id="<%= dom_id listing %>">
 
- <legend class="style-legend">
-    <a href="javascript:history.back()"><span class="greyed-out">Pick a style </span></a>
-    <span class="greyed-in">> </span></a>
-    <a href="javascript:history.back()"><span class="greyed-out">Pick a room</span></a>
-    <span class="greyed-in">> </span></a>
-    <span class="greyed-in">Pick a design</span></a>
-    <span class="greyed-inactive">> Payment</span>
-  </legend>
+    <legend class="style-legend">
+      <a href="javascript:history.back()"><span class="greyed-out">Pick a style </span></a>
+      <span class="greyed-in">> </span></a>
+      <a href="javascript:history.back()"><span class="greyed-out">Pick a room</span></a>
+      <span class="greyed-in">> </span></a>
+      <span class="greyed-in">Pick a design</span></a>
+      <span class="greyed-inactive">> Payment</span>
+    </legend>
+
+    <div class="row">
+          <div class="col-12 col-lg-8 mb-3 ps-0 space-between">
+            <div class="template-title-div">
+              <h2 class="pt-4"><%= listing.name %> </h2>
+            </div>
+            <div class="arrows-template">
+              <span class="control-button"> <i class="fa-solid fa-arrow-left-long"></i></span><span>&nbsp;&nbsp;</span><span class="control-button"> <i class="fa-solid fa-arrow-right-long"></i></span>
+            </div>
+          </div>
+    </div>
+
+
+      <div class="row preset-div">
+        <div class="col-12 col-lg-8 ps-0">
+          <div class="preset-main-image-container">
+<% if listing.photos.attached? %>
+<% listing.photos.each do |photo| %>
+                    <%= cl_image_tag photo.key, class: "preset-main-image", :crop => "fill" %>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag "wedding-ceremony-reception-celebration-romantic.jpg", class: "image" %>
+                  <% end %>
+                     </div>
+        </div>
+      </div>
   <p>
     <strong>Name:</strong>
     <%= listing.name %>

@@ -4,3 +4,143 @@
   font-size: 1rem;
   font-weight: bold;
 }
+
+.item-image {
+  border-radius: 15px;
+  border: solid 1px lightgray;
+}
+
+.item-card {
+  background-color: $white;
+  padding: 10px;
+  border-radius: 15px;
+  border: solid 1px #ebebeb;
+}
+
+.item-name {
+  font-weight:bolder;
+}
+
+.preset-items {
+  height: 54.5vh;
+  overflow-y: scroll;
+}
+
+.preset-main-image-container {
+  height: 65vh;
+}
+
+.preset-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+
+
+.item-price {
+  width: 50px;
+  margin-bottom: 0px;
+}
+
+
+.cart-input {
+  width: 20px;
+  height: 20px;
+
+}
+
+.minus, .plus{
+  width:20px;
+  height:20px;
+  background:#ffffff;
+  border-radius:4px;
+  border:1px solid #eeebeb;
+  font-size: 0.7rem;
+}
+
+.centered-text-congrats{
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  background-image: asset-url('congrats.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 93vh;
+  flex-direction: column;
+  // text-shadow: 0px 0px 35px rgb(34, 34, 34);
+
+  h4 {
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    color: #222222;
+  }
+}
+
+.template-item-description {
+color: #b2b2b2;
+}
+
+.template-item-name {
+color: $gray;
+}
+
+.item-price, .total-price {
+  color: $gray;
+}
+
+.total-template-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.price_center {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  flex-grow: 1;
+  padding: 0px 16px;
+}
+
+.card_prire_bottun {
+  background-color: $white;
+  padding: 10px;
+  border-radius: 15px;
+  border: solid 1px #ebebeb;
+}
+
+.card_prire_bottun_2 {
+  background-color: $white;
+  padding: 10px;
+  border-radius: 15px;
+  border: solid 1px #ebebeb;
+  margin-top: 60px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: black;
+}
+
+.arrows-template {
+  font-size: 1.8em;
+  cursor: pointer;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.room-type {
+  margin-bottom: 0px;
+}
