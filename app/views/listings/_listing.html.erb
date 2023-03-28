@@ -1,4 +1,13 @@
-<div id="<%= dom_id listing %>">
+<div class="container px-0" id="<%= dom_id listing %>">
+
+ <legend class="style-legend">
+    <a href="javascript:history.back()"><span class="greyed-out">Pick a style </span></a>
+    <span class="greyed-in">> </span></a>
+    <a href="javascript:history.back()"><span class="greyed-out">Pick a room</span></a>
+    <span class="greyed-in">> </span></a>
+    <span class="greyed-in">Pick a design</span></a>
+    <span class="greyed-inactive">> Payment</span>
+  </legend>
   <p>
     <strong>Name:</strong>
     <%= listing.name %>
