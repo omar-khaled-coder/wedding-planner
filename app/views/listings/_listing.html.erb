@@ -21,23 +21,39 @@
     </div>
 
 
+
+
     <div class="row preset-div">
-      <div class="col-12 col-lg-8 ps-0">
-        <div class="preset-main-image-container">
+  <div class="col-12 col-lg-8 ps-0">
+    <div class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <% listing.photos.each_with_index do |photo, index| %>
+          <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
+        <% end %>
+      </ol>
 
-          <% if listing.photos.attached? %>
-
-            <% listing.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, class: "preset-main-image", :crop => "fill" %>
-            <% end %>
-
-          <% else %>
-            <%= image_tag "wedding-ceremony-reception-celebration-romantic.jpg", class: "image" %>
-          <% end %>
-
-        </div>
+      <div class="carousel-inner">
+        <% listing.photos.each_with_index do |photo, index| %>
+          <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+            <%= cl_image_tag photo.key, class: "preset-main-image", :crop => "fill" %>
+          </div>
+        <% end %>
       </div>
+
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
+  </div>
+</div>
+
 
   <p>
     <strong>Name:</strong>
