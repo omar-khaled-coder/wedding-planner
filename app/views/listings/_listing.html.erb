@@ -21,19 +21,24 @@
     </div>
 
 
-      <div class="row preset-div">
-        <div class="col-12 col-lg-8 ps-0">
-          <div class="preset-main-image-container">
-<% if listing.photos.attached? %>
-<% listing.photos.each do |photo| %>
-                    <%= cl_image_tag photo.key, class: "preset-main-image", :crop => "fill" %>
-                    <% end %>
-                  <% else %>
-                    <%= image_tag "wedding-ceremony-reception-celebration-romantic.jpg", class: "image" %>
-                  <% end %>
-                     </div>
+    <div class="row preset-div">
+      <div class="col-12 col-lg-8 ps-0">
+        <div class="preset-main-image-container">
+
+          <% if listing.photos.attached? %>
+
+            <% listing.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, class: "preset-main-image", :crop => "fill" %>
+            <% end %>
+
+          <% else %>
+            <%= image_tag "wedding-ceremony-reception-celebration-romantic.jpg", class: "image" %>
+          <% end %>
+
         </div>
       </div>
+    </div>
+
   <p>
     <strong>Name:</strong>
     <%= listing.name %>
