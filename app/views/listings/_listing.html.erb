@@ -21,23 +21,23 @@
     <div class="row preset-div">
       <div class="col-12 col-lg-8 ps-0">
 
-          <section class="gallery">
-            <% if listing.photos.attached? %>
-              <% listing.photos.each_with_index do |photo, index| %>
-                <div class="gallery__item">
-                  <% if index == 0 %>
-                    <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
-                  <% else %>
-                    <input type="radio" id="img-<%= index + 1 %>" name="gallery" class="gallery__selector"/>
-                  <% end %>
-                  <%= cl_image_tag photo.key, class: "gallery__img" %>
-                  <label for="img-<%= index + 1 %>" class="gallery__thumb"><%= cl_image_tag photo.key, class: "gallery__thumb" %></label>
-                </div>
+        <section class="gallery">
+          <% if listing.photos.attached? %>
+            <% listing.photos.each_with_index do |photo, index| %>
+              <div class="gallery__item">
+                <% if index == 0 %>
+                  <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
+                <% else %>
+                  <input type="radio" id="img-<%= index + 1 %>" name="gallery" class="gallery__selector"/>
                 <% end %>
-            <% else %>
-              <p>No photos to display.</p>
-            <% end %>
-          </section>
+                <%= cl_image_tag photo.key, class: "gallery__img" %>
+                <label for="img-<%= index + 1 %>" class="gallery__thumb"><%= cl_image_tag photo.key, class: "gallery__thumb" %></label>
+              </div>
+              <% end %>
+          <% else %>
+            <p>No photos to display.</p>
+          <% end %>
+        </section>
 
       </div>
     </div>
