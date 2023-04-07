@@ -15,6 +15,7 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
+    @listing.items.build # Build a new Item associated with the Listing
   end
 
   # GET /listings/1/edit
@@ -33,6 +34,19 @@ class ListingsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @listing.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def add_items
+    @listing = Listing.new
+    @listing.items.build
+
+    if request.post?
+      if @listing.update(listing_params)
+        redirect_to @listing, notice: 'Items added successfully'
+      else
+        render :new
       end
     end
   end
@@ -73,6 +87,6 @@ class ListingsController < ApplicationController
     # Only allow a list of trusted parameters through.
 
   def listing_params
-    params.require(:listing).permit(:name, :rating, :description, :short_description, :location, :price, :duration, :capacity, :user_id, photos: [])
+    params.require(:listing).permit(:name, :rating, :description, :short_description, :location, :price, :duration, :capacity, :user_id, photos: [], items_attributes: [:name, :price, :description])
   end
 end

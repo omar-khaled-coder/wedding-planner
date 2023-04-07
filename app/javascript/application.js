@@ -11,3 +11,6 @@ import "bootstrap"
 import "jquery"
 import "popper.js"
 import "./application"
+//= require jquery
+//= require jquery_ujs
+//= require cocoon
