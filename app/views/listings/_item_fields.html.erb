@@ -1,0 +1,8 @@
+<!-- app/views/listings/_item_fields.html.erb -->
+<div class="nested-fields">
+  <%= f.input :photo, as: :file %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= link_to_remove_association "Remove", f %>
+</div>

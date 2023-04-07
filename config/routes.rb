@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'items/create'
   resources :bookings
   resources :listings
   devise_for :users
@@ -11,4 +12,11 @@ Rails.application.routes.draw do
   resources :bookings, only: [:create, :show, :update]
 
   get "/dashboard", to: "pages#dashboard"
+
+  resources :listings do
+    resources :items
+  end
+  resources :listings do
+    post :add_items
+  end
 end
