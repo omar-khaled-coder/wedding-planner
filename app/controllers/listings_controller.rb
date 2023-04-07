@@ -20,7 +20,10 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
+    @listing = Listing.find(params[:id])
+    @listing.items.build # make sure you build the items association
   end
+
 
 
   # POST /listings or /listings.json
@@ -87,6 +90,6 @@ class ListingsController < ApplicationController
     # Only allow a list of trusted parameters through.
 
   def listing_params
-    params.require(:listing).permit(:name, :rating, :description, :short_description, :location, :price, :duration, :capacity, :user_id, photos: [], items_attributes: [:name, :price, :description])
+    params.require(:listing).permit(:name, :rating, :description, :short_description, :location, :price, :duration, :capacity, :user_id, photos: [], items_attributes: [:photo, :name, :price, :description])
   end
 end
