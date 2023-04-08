@@ -15,15 +15,7 @@
     <%= f.association :user %>
   </div>
 
-  <h2>Items</h2>
-
-  <div class="form-inputs">
-    <%= f.fields_for :items do |item_form| %>
-      <%= render 'item_fields', f: item_form %>
-    <% end %>
-  </div>
   <div class="form-actions">
     <%= f.button :submit %>
-    <%= link_to_add_association 'Add Item', f, :items, class: 'btn btn-primary' %>
   </div>
 <% end %>

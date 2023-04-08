@@ -5,4 +5,6 @@
   <%= f.input :description %>
   <%= f.input :price %>
   <%= link_to_remove_association "Remove Item", f %>
+    <%= button_to "Remove Item", @item, method: :delete %>
+
   </div>
