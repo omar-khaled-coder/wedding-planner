@@ -10,6 +10,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  # def destroy
+  #   @item.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to listings_url, notice: "item was successfully destroyed." }
+  #     format.json { head :no_content }
+  #   end
+  # end
+
   private
 
   def item_params
