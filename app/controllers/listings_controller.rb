@@ -58,7 +58,6 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1 or /listings/1.json
 
   def update
-
     respond_to do |format|
       if @listing.update(listing_params.except(:photos))
         if params[:listing][:photos].present?
