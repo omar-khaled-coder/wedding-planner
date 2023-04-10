@@ -24,6 +24,7 @@
           <section class="gallery">
             <% if listing.photos.attached? %>
               <% listing.photos.each_with_index do |photo, index| %>
+              <div class="gallery__item_continer">
                 <div class="gallery__item">
                   <% if index == 0 %>
                     <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
@@ -33,6 +34,8 @@
                   <%= cl_image_tag photo.key, class: "gallery__img" %>
                   <label for="img-<%= index + 1 %>" class="gallery__thumb"><%= cl_image_tag photo.key, class: "gallery__thumb" %></label>
                 </div>
+              </div>
+
                 <% end %>
             <% else %>
               <p>No photos to display.</p>
