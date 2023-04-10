@@ -2,16 +2,37 @@
       <div class="col-12 col-lg-8 ps-0">
         <div class="preset-main-image-container">
 
-          <% if listing.photos.attached? %>
+          if listing.photos.attached?
 
-            <% listing.photos.each do |photo| %>
+             listing.photos.each do |photo|
               <%= cl_image_tag photo.key, class: "preset-main-image", :crop => "fill" %>
-            <% end %>
+             end
 
-          <% else %>
+
+          else
             <%= image_tag "wedding-ceremony-reception-celebration-romantic.jpg", class: "image" %>
-          <% end %>
+          end
 
         </div>
       </div>
     </div>
+
+
+
+    # this for updating the listing without deleting  the photos that already aded
+def update
+  respond_to do |format|
+    if @listing.update(listing_params.except(:photos))
+      if params[:listing][:photos].present?
+        params[:listing][:photos].each do |photo|
+          @listing.photos.attach(photo)
+        end
+      end
+      format.html { redirect_to listing_url(@listing), notice: "Listing was successfully updated." }
+      format.json { render :show, status: :ok, location: @listing }
+    else
+      format.html { render :edit, status: :unprocessable_entity }
+      format.json { render json: @listing.errors, status: :unprocessable_entity }
+    end
+  end
+end

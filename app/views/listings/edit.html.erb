@@ -1,6 +1,34 @@
 <h1>Editing listing</h1>
 
-<%= render "form", listing: @listing %>
+<%# <%= render "form", listing: @listing %>
+<%= simple_form_for(@listing, multipart: true) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<% @listing.photos_attachments.each do |pa| %>
+  <%= image_tag(pa.blob) %>
+  <%= hidden_field_tag "listing[photos_attachments_attributes][#{pa.id}][id]", pa.id %>
+  <%= hidden_field_tag "listing[photos_attachments_attributes][#{pa.id}][_destroy]", false %>
+<% end %>
+
+  <div class="form-inputs">
+  <%= f.file_field :photos, multiple: true %>
+
+    <%= f.input :name %>
+    <%= f.input :rating %>
+    <%= f.input :description %>
+    <%= f.input :short_description %>
+    <%= f.input :location %>
+    <%= f.input :price %>
+    <%= f.input :duration %>
+    <%= f.input :capacity %>
+    <%= f.association :user %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
 
 <br>
 

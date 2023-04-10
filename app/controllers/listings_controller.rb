@@ -55,12 +55,22 @@ class ListingsController < ApplicationController
   end
 
   # PATCH/PUT /listings/1 or /listings/1.json
+
   def update
-    @listing = Listing.find(params[:id])
-    if @listing.update(listing_params)
-      redirect_to @listing, notice: "Listing was successfully updated."
-    else
-      render :edit
+
+    respond_to do |format|
+      if @listing.update(listing_params.except(:photos))
+        if params[:listing][:photos].present?
+          params[:listing][:photos].each do |photo|
+            @listing.photos.attach(photo)
+          end
+        end
+        format.html { redirect_to listing_url(@listing), notice: "Listing was successfully updated." }
+        format.json { render :show, status: :ok, location: @listing }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @listing.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -85,7 +95,11 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
 
-  def listing_params
-    params.require(:listing).permit(:name, :rating, :description, :short_description, :location, :price, :duration, :capacity, :user_id, photos: [], items_attributes: [:photo, :name, :price, :description])
-  end
+    def listing_params
+      params.require(:listing).permit(:name, :rating, :description, :short_description, :location, :price, :duration, :capacity, :user_id, photos: [], photos_attachments: [:id, :_destroy], items_attributes: [:photo, :name, :price, :description])
+    end
+
+
+
+
 end
