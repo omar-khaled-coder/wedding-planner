@@ -54,6 +54,7 @@ class ListingsController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /listings/1 or /listings/1.json
 
   def update
@@ -73,6 +74,8 @@ class ListingsController < ApplicationController
       end
     end
   end
+
+
 
   # DELETE /listings/1 or /listings/1.json
   def destroy
@@ -98,8 +101,4 @@ class ListingsController < ApplicationController
     def listing_params
       params.require(:listing).permit(:name, :rating, :description, :short_description, :location, :price, :duration, :capacity, :user_id, photos: [], photos_attachments: [:id, :_destroy], items_attributes: [:photo, :name, :price, :description])
     end
-
-
-
-
 end
