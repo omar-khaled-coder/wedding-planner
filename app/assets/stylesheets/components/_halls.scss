@@ -183,6 +183,9 @@ img {
     padding-top: 6px;
     margin: 6px;
     display: block;
+    width: 108px;
+    height: 90%;
+
   }
 
   &__selector {
@@ -199,6 +202,12 @@ img {
       }
     }
   }
+  .gallery__item_continer{
+    width: 99px;
+    display: flex;
+    justify-content: space-evenly;
 
+
+  }
 
 }
