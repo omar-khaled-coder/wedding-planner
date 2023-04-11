@@ -21,26 +21,72 @@
 
       <div class="col-12 col-lg-8 ps-0">
 
-          <section class="gallery">
-            <% if listing.photos.attached? %>
-              <% listing.photos.each_with_index do |photo, index| %>
-              <div class="gallery__item_continer">
-                <div class="gallery__item">
-                  <% if index == 0 %>
-                    <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
-                  <% else %>
-                    <input type="radio" id="img-<%= index + 1 %>" name="gallery" class="gallery__selector"/>
-                  <% end %>
-                  <%= cl_image_tag photo.key, class: "gallery__img" %>
-                  <label for="img-<%= index + 1 %>" class="gallery__thumb"><%= cl_image_tag photo.key, class: "gallery__thumb" %></label>
-                </div>
-              </div>
+          <!-- Display the first 5 photos -->
+<!-- Add a section to display the photos -->
+<section class="gallery">
+  <% if listing.photos.attached? %>
+    <% listing.photos.limit(4).each_with_index do |photo, index| %>
+      <!-- Display the photo -->
+      <div class="gallery__item_continer">
+        <div class="gallery__item">
+          <% if index == 0 %>
+            <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
+          <% else %>
+            <input type="radio" id="img-<%= index + 1 %>" name="gallery" class="gallery__selector"/>
+          <% end %>
+          <%= cl_image_tag photo.key, class: "gallery__img" %>
+          <label for="img-<%= index + 1 %>" class="gallery__thumb"><%= cl_image_tag photo.key, class: "gallery__thumb" %></label>
+        </div>
+      </div>
+    <% end %>
 
-                <% end %>
-            <% else %>
-              <p>No photos to display.</p>
-            <% end %>
-          </section>
+    <!-- Add a link to view more photos -->
+    <% if listing.photos.size > 4 %>
+      <div class="view-more">
+        <%= link_to "View #{listing.photos.size - 4} More photos", "#", class: "view-more__link", data: { target: "#gallery-all" } %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <p>No photos to display.</p>
+  <% end %>
+</section>
+
+<!-- Add a hidden section to display all the photos -->
+<section id="gallery-all" class="gallery-all" style="display: none;">
+  <% if listing.photos.attached? %>
+    <% listing.photos.each_with_index do |photo, index| %>
+      <!-- Display the photo -->
+      <div class="gallery__item_continer">
+        <div class="gallery__item">
+          <% if index == 0 %>
+            <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
+          <% else %>
+            <input type="radio" id="img-<%= index + 1 %>" name="gallery" class="gallery__selector"/>
+          <% end %>
+          <%= cl_image_tag photo.key, class: "gallery__img" %>
+          <label for="img-<%= index + 1 %>" class="gallery__thumb"><%= cl_image_tag photo.key, class: "gallery__thumb" %></label>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No photos to display.</p>
+  <% end %>
+</section>
+
+
+<!-- Add a script to toggle the display of the photo sections -->
+<script>
+  $(document).ready(function() {
+    $('.view-more__link').click(function() {
+      $('.gallery').toggle();
+      $('.gallery-all').toggle();
+      return false;
+    });
+  });
+</script>
+
+
 
       </div>
 

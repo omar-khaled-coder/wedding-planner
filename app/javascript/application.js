@@ -13,4 +13,4 @@ import "popper.js"
 import "./application"
 //= require jquery_ujs
 //= require cocoon
-import "hall"
+import "./hall"
