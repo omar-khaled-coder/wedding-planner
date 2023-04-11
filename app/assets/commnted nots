@@ -36,3 +36,120 @@ def update
     end
   end
 end
+
+<section class="gallery">
+  <% if listing.photos.attached? %>
+    <% listing.photos.limit(4).each_with_index do |photo, index| %>
+      <!-- Display the photo -->
+      <div class="gallery__item_continer">
+        <div class="gallery__item">
+          <% if index == 0 %>
+            <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
+          <% else %>
+            <input type="radio" id="img-<%= index + 1 %>" name="gallery" class="gallery__selector"/>
+          <% end %>
+          <%= cl_image_tag photo.key, class: "gallery__img" %>
+          <label for="img-<%= index + 1 %>" class="gallery__thumb"><%= cl_image_tag photo.key, class: "gallery__thumb" %></label>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Add a link to view more photos -->
+    <% if listing.photos.size > 5 %>
+      <div class="view-more">
+<%= link_to "View #{listing.photos.size - 4} More Photos", url_for(anchor: "gallery-all"), class: "view-more__link" %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <p>No photos to display.</p>
+  <% end %>
+</section>
+
+<!-- Add a hidden section to display all the photos -->
+<section id="gallery-all" class="gallery-all" style="display: none;">
+  <% if listing.photos.attached? %>
+    <% listing.photos.each_with_index do |photo, index| %>
+      <!-- Display the photo -->
+      <div class="gallery__item_continer">
+        <div class="gallery__item">
+          <% if index == 0 %>
+            <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
+          <% else %>
+            <input type="radio" id="img-<%= index + 1 %>" name="gallery" class="gallery__selector"/>
+          <% end %>
+          <%= cl_image_tag photo.key, class: "gallery__img" %>
+          <label for="img-<%= index + 1 %>" class="gallery__thumb"><%= cl_image_tag photo.key, class: "gallery__thumb" %></label>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No photos to display.</p>
+  <% end %>
+</section>
+
+
+
+
+
+
+
+-------------------------------------------
+
+
+<section class="gallery">
+  <% if listing.photos.attached? %>
+    <% listing.photos.limit(4).each_with_index do |photo, index| %>
+      <!-- Display the photo -->
+      <div class="gallery__item_continer">
+        <div class="gallery__item">
+          <% if index == 0 %>
+            <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
+          <% else %>
+            <input type="radio" id="img-<%= index + 1 %>" name="gallery" class="gallery__selector"/>
+          <% end %>
+          <%= cl_image_tag photo.key, class: "gallery__img" %>
+          <label for="img-<%= index + 1 %>" class="gallery__thumb"><%= cl_image_tag photo.key, class: "gallery__thumb" %></label>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Add a link to view fewer photos -->
+    <% if listing.photos.size > 4 %>
+      <div class="view-more">
+        <%= link_to "View #{listing.photos.size - 4} More photos", url_for(anchor: "gallery"), class: "view-more__link" %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <p>No photos to display.</p>
+  <% end %>
+</section>
+
+<!-- Add a hidden section to display all the photos -->
+<section id="gallery-all" class="gallery-all" style="display: none;">
+  <% if listing.photos.attached? %>
+    <% listing.photos.each_with_index do |photo, index| %>
+      <!-- Display the photo -->
+      <div class="gallery__item_continer">
+        <div class="gallery__item">
+          <% if index == 0 %>
+            <input type="radio" id="img-<%= index + 1 %>-all" checked name="gallery-all" class="gallery__selector-all"/>
+          <% else %>
+            <input type="radio" id="img-<%= index + 1 %>-all" name="gallery-all" class="gallery__selector-all"/>
+          <% end %>
+          <%= cl_image_tag photo.key, class: "gallery__img-all" %>
+          <label for="img-<%= index + 1 %>-all" class="gallery__thumb-all"><%= cl_image_tag photo.key, class: "gallery__thumb-all" %></label>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Add a link to view fewer photos -->
+    <div class="view-more">
+      <%= link_to "View Fewer Photos", url_for(anchor: "gallery"), class: "view-more__link" %>
+    </div>
+
+  <% else %>
+    <p>No photos to display.</p>
+  <% end %>
+</section>
