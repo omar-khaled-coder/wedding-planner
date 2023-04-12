@@ -22,35 +22,35 @@
       <div class="col-12 col-lg-8 ps-0">
 
           <!-- Display the first 5 photos -->
-<!-- Add a section to display the photos -->
-<section class="gallery">
-  <% if listing.photos.attached? %>
-    <% listing.photos.limit(4).each_with_index do |photo, index| %>
-      <!-- Display the photo -->
-      <div class="gallery__item_continer">
-        <div class="gallery__item">
-          <% if index == 0 %>
-            <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
+          <!-- Add a section to display the photos -->
+        <section class="gallery">
+          <% if listing.photos.attached? %>
+            <% listing.photos.limit(4).each_with_index do |photo, index| %>
+              <!-- Display the photo -->
+              <div class="gallery__item_continer">
+                <div class="gallery__item">
+                  <% if index == 0 %>
+                    <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
+                  <% else %>
+                    <input type="radio" id="img-<%= index + 1 %>" name="gallery" class="gallery__selector"/>
+                  <% end %>
+                  <%= cl_image_tag photo.key, class: "gallery__img" %>
+                  <label for="img-<%= index + 1 %>" class="img-lable"><%= cl_image_tag photo.key, class: "gallery__thumb" %></label>
+                </div>
+              </div>
+            <% end %>
+
+            <!-- Add a link to view more photos -->
+            <% if listing.photos.size > 4 %>
+              <div class="view-more">
+                <%= link_to "+ #{listing.photos.size - 4} Photos", "#", class: "view-more__link", data: { target: "#gallery-all" } %>
+              </div>
+            <% end %>
+
           <% else %>
-            <input type="radio" id="img-<%= index + 1 %>" name="gallery" class="gallery__selector"/>
+            <p>No photos to display.</p>
           <% end %>
-          <%= cl_image_tag photo.key, class: "gallery__img" %>
-          <label for="img-<%= index + 1 %>" class="gallery__thumb"><%= cl_image_tag photo.key, class: "gallery__thumb" %></label>
-        </div>
-      </div>
-    <% end %>
-
-    <!-- Add a link to view more photos -->
-    <% if listing.photos.size > 4 %>
-      <div class="view-more">
-        <%= link_to "View #{listing.photos.size - 4} More photos", "#", class: "view-more__link", data: { target: "#gallery-all" } %>
-      </div>
-    <% end %>
-
-  <% else %>
-    <p>No photos to display.</p>
-  <% end %>
-</section>
+        </section>
 
 <!-- Add a hidden section to display all the photos -->
 <section id="gallery-all" class="gallery-all" style="display: none;">

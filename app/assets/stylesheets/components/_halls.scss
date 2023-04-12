@@ -180,11 +180,13 @@ img {
   }
 
    &__thumb {
-    padding-top: 6px;
-    margin: 6px;
+    padding-top: 3px;
+    margin: 5px;
+    margin-left: 5px;
     display: block;
-    width: 108px;
+    width: 115px;
     height: 90%;
+    margin-left: 3px;
 
   }
 
@@ -203,11 +205,28 @@ img {
     }
   }
   .gallery__item_continer{
-    width: 99px;
+    // width: 99px;
     display: flex;
     justify-content: space-evenly;
 
 
   }
 
+  .img-lable{
+    margin: 5px;
+    margin-left: 5px;
+    display: block;
+    width: 115px;
+    height: 90%;
+    margin-left: 3px;
+
+  }
+
+  .view-more{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    padding-left: 3px;
+    margin-left: 3px;
+  }
 }
