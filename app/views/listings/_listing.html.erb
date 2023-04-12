@@ -69,6 +69,11 @@
         </div>
       </div>
     <% end %>
+
+    <!-- Add a link to view fewer photos -->
+    <div class="view-more">
+      <%= link_to "View Fewer Photos", url_for(anchor: "gallery"), class: "view-more__link" %>
+    </div>
   <% else %>
     <p>No photos to display.</p>
   <% end %>
