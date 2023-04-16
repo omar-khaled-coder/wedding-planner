@@ -41,11 +41,11 @@
             <% end %>
 
             <!-- Add a link to view more photos -->
-            <% if listing.photos.size > 4 %>
-              <div class="view-more">
-                <%= link_to "+ #{listing.photos.size - 4} Photos", "#", class: "view-more__link", data: { target: "#gallery-all" } %>
-              </div>
-            <% end %>
+              <% if listing.photos.size > 4 %>
+                <div class="view-more">
+                  <%= link_to "+ #{listing.photos.size - 4} Photos", "#", class: "view-more__link", data: { target: "#gallery-all" }, style: "background-image: url(#{cl_image_path(listing.photos[4].key)})" %>
+                </div>
+              <% end %>
 
           <% else %>
             <p>No photos to display.</p>

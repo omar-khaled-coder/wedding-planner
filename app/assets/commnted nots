@@ -153,3 +153,11 @@ end
     <p>No photos to display.</p>
   <% end %>
 </section>
+
+---------------------------------
+view more buttin with background
+<% if listing.photos.size > 4 %>
+  <div class="view-more">
+    <%= link_to "+ #{listing.photos.size - 4} Photos", "#", class: "view-more__link", data: { target: "#gallery-all" }, style: "background-image: url(#{cl_image_path(listing.photos[4].key)})" %>
+  </div>
+<% end %>
