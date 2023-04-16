@@ -229,4 +229,18 @@ img {
     padding-left: 3px;
     margin-left: 3px;
   }
+
+  .view-more__link{
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 115px;
+    height: 74px;
+    margin-left: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 25px;
+
+  }
 }
