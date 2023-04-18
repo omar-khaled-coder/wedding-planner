@@ -57,7 +57,7 @@
   <% if listing.photos.attached? %>
     <% listing.photos.each_with_index do |photo, index| %>
       <!-- Display the photo -->
-      <div class="gallery__item_continer rounded float-start">
+      <div class="gallery__item_continer ">
         <div class="gallery__item">
           <% if index == 0 %>
             <input type="radio" id="img-<%= index + 1 %>" checked name="gallery" class="gallery__selector"/>
