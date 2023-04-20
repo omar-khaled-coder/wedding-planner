@@ -22,16 +22,20 @@ class BookingsController < ApplicationController
   # POST /bookings or /bookings.json
   def create
     @booking = Booking.new(booking_params)
+    @booking.user_id = current_user.id
 
-    respond_to do |format|
-      if @booking.save
-        format.html { redirect_to booking_url(@booking), notice: "Booking was successfully created." }
-        format.json { render :show, status: :created, location: @booking }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
+    @listing = Listing.find(params[:listing_id])
+    if
+
+      @booking.listing = @listing
+      @booking.status = "unconfirmed"
+      @booking.save
+      redirect_to dashboard_path
+    else
+      flash.now[:error] = "Bananas, its fully booked!"
+      render "listings/show", status: :unprocessable_entity
     end
+
   end
 
   # PATCH/PUT /bookings/1 or /bookings/1.json
