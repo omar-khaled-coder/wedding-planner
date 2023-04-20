@@ -43,7 +43,9 @@
             <!-- Add a link to view more photos -->
               <% if listing.photos.size > 4 %>
                 <div class="view-more">
-                  <%= link_to "+ #{listing.photos.size - 4} Photos", "#", class: "view-more__link", data: { target: "#gallery-all" }, style: "background-image: url(#{cl_image_path(listing.photos[4].key)})" %>
+                  <%# <%= link_to "+ #{listing.photos.size - 4} Photos", "#", class: "view-more__link", data: { target: "#gallery-all" }, style: "background-image: url(#{cl_image_path(listing.photos[4].key)})" %>
+<%= link_to "+ #{listing.photos.size - 4} Photos", "#gallery-all", class: "view-more__link", data: { fancybox: true }, style: "background-image: url(#{cl_image_path(listing.photos[4].key)})" %>
+
                 </div>
               <% end %>
 
@@ -84,6 +86,20 @@
 <!-- Add a script to toggle the display of the photo sections -->
 <script>
   $(document).ready(function() {
+    // Initialize Fancybox
+    $('[data-fancybox]').fancybox({
+  toolbar: false,
+  smallBtn: true,
+  transitionEffect: "fade",
+  transitionDuration: 500,
+  baseClass: "my-fancybox",
+  thumbs: {
+    autoStart: true
+  }
+});
+
+
+    // Toggle the display of the photo sections
     $('.view-more__link').click(function() {
       $('.gallery').toggle();
       $('.gallery-all').toggle();
@@ -91,6 +107,8 @@
     });
   });
 </script>
+
+
 
 
 
@@ -131,7 +149,7 @@
 
                   <div class="total-template-price card_prire_bottun" style="position: relative;">
                     <div class="total", style="padding-left: 10px;" >Your total is : $ <span data-total-price-target="total" class="total-price">0</span></div>
-                    <input type="submit" value="Submit" class="button" style="border:none">
+  <%= link_to "Book now", bookings_path(booking: { date: @booking.date, user_id: current_user.id, listing_id: @listing.id }), data: {turbo_method: :post}, class: "button-red"%>                    <input type="submit" value="Submit" class="button" style="border:none">
 
                   </div>
 
