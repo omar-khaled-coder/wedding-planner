@@ -150,7 +150,7 @@
 
                   <div class="total-template-price card_prire_bottun" style="position: relative;">
                     <div class="total", style="padding-left: 10px;" >Your total is : $ <span data-total-price-target="total" class="total-price">0</span></div>
-                            <%= link_to "Book now", bookings_path(@listing), data: {turbo_method: :post}, class: "button-red"%>
+                            <%= link_to "Book now", new_booking_path(@listing), data: {turbo_method: :post}, class: "button-red"%>
 
                     <input type="submit" value="Submit" class="button" style="border:none">
 
