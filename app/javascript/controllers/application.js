@@ -13,10 +13,10 @@ $(document).on('turbo:load', function() {
 });
 const myCarouselElement = document.querySelector('#myCarousel')
 
-const carousel = new bootstrap.Carousel(myCarouselElement, {
-  interval: 2000,
-  touch: false
-})
+// const carousel = new bootstrap.Carousel(myCarouselElement, {
+//   interval: 2000,
+//   touch: false
+// })
 
 const myCarousel = document.getElementById('myCarousel')
 
