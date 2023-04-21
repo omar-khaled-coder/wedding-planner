@@ -21,11 +21,13 @@ class BookingsController < ApplicationController
 
   # POST /bookings or /bookings.json
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new
     @booking.user_id = current_user.id
 
     @listing = Listing.find(params[:listing_id])
-    if
+    if @listing.capacity.positive?
+      @listing.capacity -= 1
+      @listing.save
 
       @booking.listing = @listing
       @booking.status = "unconfirmed"
@@ -37,6 +39,7 @@ class BookingsController < ApplicationController
     end
 
   end
+
 
   # PATCH/PUT /bookings/1 or /bookings/1.json
   def update

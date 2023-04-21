@@ -182,11 +182,10 @@ img {
    &__thumb {
     padding-top: 3px;
     margin: 5px;
-    margin-left: 5px;
+    margin-left: -3px;
     display: block;
     width: 115px;
     height: 90%;
-    margin-left: 3px;
 
   }
 
@@ -234,13 +233,15 @@ img {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    width: 115px;
-    height: 74px;
+    width: 108px;
+    height: 72px;
     margin-left: 3px;
     margin-bottom: 5px;
     display: flex;
     justify-content: space-around;
     padding-top: 25px;
-
+    color: #ffffffd9;
+    font-family: $body-font;
+    font-size: 18px;
   }
 }
