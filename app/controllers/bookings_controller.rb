@@ -8,10 +8,13 @@ class BookingsController < ApplicationController
 
   # GET /bookings/1 or /bookings/1.json
   def show
+    @booking = Booking.find(params[:id])
+    @listing = Listing.find(params[:listing_id])
   end
 
   # GET /bookings/new
   def new
+
     @booking = Booking.new
   end
 
@@ -71,7 +74,10 @@ class BookingsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+
     def booking_params
-      params.require(:booking).permit(:date, :user_id, :listing_id)
+
+     params.require(:booking).permit(:date, :user_id, :listing_id)
     end
+
 end
